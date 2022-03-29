@@ -5,7 +5,6 @@ import line_intersection
 def check_inside(polygon, st_pt):
     horizantal_line= {1, 0, st_pt[0]}
     
-    #Format: 0:up, 1:down, 2:left, 3:right
     intersections= 0
 
     for i in range(0, len(polygon)):
