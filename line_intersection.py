@@ -12,10 +12,3 @@ def findIntersection(poly, checker):
         return X
     except:
         return
-    
-
-
-poly = [4, 3, 20]
-checker = [-5, 9, 26]
-
-findIntersection(poly, checker)
