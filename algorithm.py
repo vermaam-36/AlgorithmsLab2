@@ -20,7 +20,7 @@ def check_inside(polygon, st_pt):
         if(intersection_point == None):
             continue
 
-        if(intersection_point==point1 or intersection_point==point2):
+        if(intersection_point==point1):
             intersections+=1
 
         if(intersection_point[0]>st_pt[0]):
