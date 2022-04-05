@@ -22,7 +22,9 @@ def check_inside(polygon, st_pt):
         if(intersection_point == st_pt):
             return True
 
-        intersections+=1
+        if(intersection_point[0]>st_pt[0]):
+            intersections+=1
+        
         
     if(intersections%2 == 1):
         return True
