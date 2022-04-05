@@ -15,7 +15,7 @@ def check_inside(polygon, st_pt):
             point2=polygon[0]
         
         polygon_line= create_line(point1, point2)
-        intersection_point=line_intersection.findIntersection()
+        intersection_point=line_intersection.findIntersection(polygon_line, horizantal_line, st_pt)
 
         if(intersection_point == None):
             continue
