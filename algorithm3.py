@@ -1,5 +1,6 @@
 import random
 
+
 def find_min(k, arr, tally):
     pickRand(arr)
 
@@ -57,9 +58,32 @@ def sort_around_pivot(pivot, arr):
     return (pivot)
 
 
+def boringWay(arr):
+
+    return
+
+
+def quickSort(arr, low, high):
+    if(low < high):
+        pivot = partition(arr, low, high)
+        quickSort(arr, low, pivot - 1)
+        quickSort(arr, pivot + 1, high)
+
+def partition(arr, low, high):
+    pivot = arr[high]
+    i = low - 1
+    for j in range(low, high - 1):
+        if(arr[j] < pivot):
+            i = i + 1
+            (arr[i], arr[j]) = (arr[j], arr[i])
+    (arr[i + 1], arr[high]) = (arr[high], arr[i + 1])
+    return i + 1
+
+
 #simple tests
 test1 = [5,4,3,2,1]
 testK1 = 2
 test2 = [9,3,5,2,8]
 testK2 = 1
-print(find_min(testK1, test1, 0))
+
+
