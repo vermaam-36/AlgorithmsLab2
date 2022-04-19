@@ -65,7 +65,7 @@ def boringWay(arr, k):
     return arr[k - 1]
 
 '''
-the following two methods are an implementation of classical
+the following two methods are an implementation of classical(right most pivot)
 quickSort.
 Code From:
 https://www.geeksforgeeks.org/quick-sort/
