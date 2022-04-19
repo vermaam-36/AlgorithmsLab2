@@ -60,4 +60,6 @@ def sort_around_pivot(pivot, arr):
 #simple tests
 test1 = [5,4,3,2,1]
 testK1 = 2
+test2 = [9,3,5,2,8]
+testK2 = 1
 print(find_min(testK1, test1, 0))
