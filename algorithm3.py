@@ -64,7 +64,12 @@ def boringWay(arr, k):
     print(arr)
     return arr[k - 1]
 
-
+'''
+the following two methods are an implementation of classical
+quickSort.
+Code From:
+https://www.geeksforgeeks.org/quick-sort/
+'''
 def quick_sort(array, low, high):
   if low < high:
  
@@ -110,7 +115,6 @@ test1 = [5,4,3,2,1]
 testK1 = 2
 test2 = [9,3,5,2,8]
 testK2 = 1
-print(boringWay(test2, testK2))
 
 
 #make benchmarks
