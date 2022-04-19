@@ -58,9 +58,9 @@ def sort_around_pivot(pivot, arr):
     return (pivot)
 
 
-def boringWay(arr):
-
-    return
+def boringWay(arr, k):
+    quickSort(arr)
+    return arr[k - 1]
 
 
 def quickSort(arr, low, high):
