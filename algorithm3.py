@@ -2,16 +2,15 @@ import random
 import time
 import numpy as np
 
+
 def find_min(k, arr, start, end):
     if len(arr) >= 1:
-        if start >= end:
-            print("here" + str(arr[start]) + str(start))
-            return arr[start]
+        if start > end:
+            start, end = end, start
         pickRand(arr, start, end)
 
         pivot = sort_around_pivot(arr[0], arr)
         if pivot == k - 1:
-            print("there")
             return arr[pivot]
 
         if k - 1 < pivot:
@@ -160,7 +159,6 @@ def benchmark(arr, k, method):
         end_time = time.perf_counter()
         return end_time - start_time
 
-
-arr = create_random(10000)
-print(np.sort(arr))
-benchmark(arr, 15, False)
+for i in range(100):
+    arr = create_random(10000)
+    benchmark(arr, 15, False)
