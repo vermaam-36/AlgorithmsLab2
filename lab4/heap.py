@@ -21,12 +21,14 @@ def _right(i):
 
 def _heap_increase_key(A, i, key):
     """
+    Amish
     "Bubble" a key up the heap.
     """
     pass
 
 def _max_heapify(A, i):
     """
+    Dylan
     Element is in the list but not yet part of the heap. This
     adds i into the heap.
     """
@@ -34,6 +36,7 @@ def _max_heapify(A, i):
 
 def max_heap_insert(A, key):
     """
+    Amish
     Inserts an element into the heap. This method
     should append a None value to the list to make
     room for the new key and call _heap_increase_key.
@@ -42,6 +45,7 @@ def max_heap_insert(A, key):
 
 def heap_extract_max(A):
     """
+    Mikey
     Removes the maximum value from the heap and returns it.
     The list size should be reduced by 1.
     """
@@ -49,6 +53,7 @@ def heap_extract_max(A):
 
 def build_max_heap(A):
     """
+    Dylan
     Takes a list A of unordered elements and reorders the elements
     to construct a max binary heap.
     """
@@ -56,6 +61,7 @@ def build_max_heap(A):
 
 def heapsort(A):
     """
+    Gavin
     Sorts a list of elements by converting the list into a heap
     and then extracting each element from biggest to smallest.
     Note that this is done in place.
