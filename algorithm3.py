@@ -3,6 +3,61 @@ import time
 import numpy as np
 
 
+
+'''
+Time Analysis:
+
+Recurrance Relations:
+Our solution revolves around quick sort so 
+we will base our recurrance relations around 
+quick sorts
+
+T(q) + T(n - q) + f(n) where f(n) is the partition function
+
+Partition function:
+T(n) = 6 + 5n inside O(n)
+
+thus f(n) = n
+T(q) + T(n - q) + n
+
+Worst Case:
+The worst case occurs when q = 1 and the kth element 
+is not found until the entire list is sorted, rare and hard
+to produce but theoretically possible thus,
+T(n) = T(n - 1) + n
+Substitution:
+
+Guess: T(n) is inside O(n^2)
+
+Induction Goal:
+
+T(n) <= cn^2 for some c and n >= n0
+
+Proof of Induction Goal:
+
+T(n) = T(n - 1) + n <= c(n-1)^2 + n
+cn^2 - (2cn - c - n) <= cn^2
+when 2cn - c - n >= 0 <-> c >= n/(2n - 1) <-> c >= 1/2(2-1/n)
+for n >= 1 any c >= 1 will work
+
+thus T(n) is in O(n^2) and is the worst case of our algorithm
+
+Average and Best Case:
+The average and best case of our algorithm is also similar to quick sorts
+however, we will stop once we have sorted everything at and before the k - 1 index
+instead of sorting the entire list
+thus
+T(n) = 2T(k/2) + n
+with best case partitioning q = k/2
+
+Master Method:
+a = 2, b = 2, f(n) = n
+k^log(2,2) = n = f(n)
+we have hit case 2
+thus our algorithm is in
+bigTheta(k^log(2,2)log(n)) = bigTheta(klogn)
+'''
+
 def find_min(k, arr, start, end):
     if len(arr) >= 1:
         if start > end:
@@ -92,28 +147,29 @@ def quick_sort(array, low, high):
 def partition(array, low, high):
  
   # Choose the rightmost element as pivot
-  pivot = array[high]
+  pivot = array[high] #1
  
   # Pointer for greater element
-  i = low - 1
+  i = low - 1 # + 1
  
   # Traverse through all elements
   # compare each element with pivot
-  for j in range(low, high):
-    if array[j] <= pivot:
+  for j in range(low, high): # + 1 + n(1
+    if array[j] <= pivot: # + 1 + b(2)
       # If element smaller than pivot is found
       # swap it with the greater element pointed by i
       i = i + 1
  
       # Swapping element at i with element at j
       (array[i], array[j]) = (array[j], array[i])
- 
+    # + 1) + 1
   # Swap the pivot element with the greater element specified by i
-  (array[i + 1], array[high]) = (array[high], array[i + 1])
+  (array[i + 1], array[high]) = (array[high], array[i + 1]) # + 1
  
   # Return the position from where partition is done
-  return i + 1
+  return i + 1 # + 1
 
+# run time T(n) = 1 + 1 + 1 + n(1 + 1 + 2 + 1) + 1 + 1 + 1 = 6 + 5n inside O(n)
 
 # simple tests
 test1 = [5, 4, 3, 2, 1]
