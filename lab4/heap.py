@@ -1,3 +1,7 @@
+import math
+
+
+
 def _parent(i):
     """
     Return the index of the parent of the element at index i.
@@ -32,6 +36,21 @@ def _max_heapify(A, i):
     Element is in the list but not yet part of the heap. This
     adds i into the heap.
     """
+    l = _left(i)
+    r = _right(i)
+    n = len(A)
+    largest = None
+    if l <= n and A[l] > A[i]:
+        largest = l
+    else:
+        largest = i
+    if r <= n and A[r] > A[largest]:
+        largest = r
+    if largest != i:
+        A[i], A[largest] = A[largest], A[i]
+        _max_heapify(A, largest)
+
+
     pass
 
 def max_heap_insert(A, key):
@@ -57,6 +76,10 @@ def build_max_heap(A):
     Takes a list A of unordered elements and reorders the elements
     to construct a max binary heap.
     """
+    n = len(A)
+    i = math.floor(n/2)
+    for i in range(i, 0):
+        _max_heapify(A, i)
     pass
 
 def heapsort(A):
