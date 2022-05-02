@@ -89,7 +89,14 @@ def heapsort(A):
     and then extracting each element from biggest to smallest.
     Note that this is done in place.
     """
-    pass
+    s = math.floor(len(A))
+
+    for i in range(s - 1, -1, -1):
+        _max_heapify(A, i)
+
+    for i in range(len(A) - 1, 0, -1):
+        A[i], A[0] = A[0], A[i]
+        _max_heapify(A, i)
     
 
 
