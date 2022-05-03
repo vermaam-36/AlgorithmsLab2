@@ -1,5 +1,7 @@
 import math
 
+from numpy import Inf
+
 
 
 def _parent(i):
@@ -36,6 +38,7 @@ def _heap_increase_key(A, i, key):
         A[i] = A[_parent(i)]
         A[_parent(i)] = temp
         i =_parent(i)
+    pass
 
 def _max_heapify(A, i):
     """
@@ -46,9 +49,10 @@ def _max_heapify(A, i):
     n = len(A) - 1
     l = _left(i)
     r = _right(i)
-    largest = i
     if (l <= n and A[l] > A[i]):
         largest = l
+    else:
+        largest = i
     if (r <= n and A[r] > A[largest]):
         largest = r
     if (largest != i):
@@ -63,8 +67,10 @@ def max_heap_insert(A, key):
     should append a None value to the list to make
     room for the new key and call _heap_increase_key.
     """
-    A.append(float('-inf'))
+    A.append(-Inf)
     _heap_increase_key(A, len(A)-1, key)
+    _max_heapify(A, len(A) - 1)
+    pass
 
 def heap_extract_max(A):
     """
@@ -89,11 +95,10 @@ def build_max_heap(A):
     Takes a list A of unordered elements and reorders the elements
     to construct a max binary heap.
     """
-    for i in range(len(A) - 1, 0, -1):
-        temp = A[0]
-        A[0] = A[i]
-        A[i] = temp
-        _max_heapify(A, i - 1)    
+    n = len(A) - 1
+    start = n // 2
+    for i in range(start, -1, -1):
+        _max_heapify(A, i)    
     pass
 
 def heapsort(A):
@@ -105,17 +110,17 @@ def heapsort(A):
     """
     build_max_heap(A)
     n = len(A) - 1
-    for i in range(n, 0, -1):
-        A[0], A[i] = A[i], A[0]
-        _max_heapify(A[:i], 0)
-
+    sorted = [None] * len(A)
+    for i in range(n, -1, -1):
+        sorted[i] = heap_extract_max(A)
+    A += sorted
+    pass
 
     
 
 
-a = [5,2,35,15,2]
-build_max_heap(a)
-
+a = [5,2,7,1,10]
+heapsort(a)
 print(a)
     
 
