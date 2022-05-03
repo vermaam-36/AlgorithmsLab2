@@ -28,7 +28,14 @@ def _heap_increase_key(A, i, key):
     Amish
     "Bubble" a key up the heap.
     """
-    pass
+    if (key<A[i]):
+        raise Exception("New Key is smaller than previous key")
+    A[i] = key
+    while i > 0 and A[_parent(i)]<A[i]:
+        temp=A[i]
+        A[i] = A[_parent(i)]
+        A[_parent(i)] = temp
+        i =_parent(i)
 
 def _max_heapify(A, i):
     """
@@ -60,7 +67,8 @@ def max_heap_insert(A, key):
     should append a None value to the list to make
     room for the new key and call _heap_increase_key.
     """
-    pass
+    A.append(float('-inf'))
+    _heap_increase_key(A, len(A)-1, key)
 
 def heap_extract_max(A):
     """
