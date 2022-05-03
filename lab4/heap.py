@@ -43,21 +43,17 @@ def _max_heapify(A, i):
     Element is in the list but not yet part of the heap. This
     adds i into the heap.
     """
+    n = len(A) - 1
     l = _left(i)
     r = _right(i)
-    n = len(A)
-    largest = None
-    if l <= n and A[l] > A[i]:
+    largest = i
+    if (l <= n and A[l] > A[i]):
         largest = l
-    else:
-        largest = i
-    if r <= n and A[r] > A[largest]:
+    if (r <= n and A[r] > A[largest]):
         largest = r
-    if largest != i:
+    if (largest != i):
         A[i], A[largest] = A[largest], A[i]
         _max_heapify(A, largest)
-
-
     pass
 
 def max_heap_insert(A, key):
@@ -84,10 +80,11 @@ def build_max_heap(A):
     Takes a list A of unordered elements and reorders the elements
     to construct a max binary heap.
     """
-    n = len(A)
-    i = math.floor(n/2)
-    for i in range(i, 0):
-        _max_heapify(A, i)
+    for i in range(len(A) - 1, 0, -1):
+        temp = A[0]
+        A[0] = A[i]
+        A[i] = temp
+        _max_heapify(A, i - 1)    
     pass
 
 def heapsort(A):
@@ -99,15 +96,15 @@ def heapsort(A):
     """
     s = math.floor(len(A))
 
-    for i in range(s - 1, -1, -1):
-        _max_heapify(A, i)
-
-    for i in range(len(A) - 1, 0, -1):
-        A[i], A[0] = A[0], A[i]
-        _max_heapify(A, i)
+    for i in range(s, -1, 2):
+        A[1], A[i] = A[i], A[1]
+        _max_heapify(A, 1)
     
 
 
+a = [5,2,35,15,2]
+build_max_heap(a)
+print(a)
     
 
     
