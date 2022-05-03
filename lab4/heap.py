@@ -72,10 +72,15 @@ def heap_extract_max(A):
     Removes the maximum value from the heap and returns it.
     The list size should be reduced by 1.
     """
-    largest = A[1]
-    A[1] = A[len(A) - 1]
-    _max_heapify(A, 1)
-    return largest
+    n = len(A) - 1
+    if n < 0:
+        raise Exception("heap underflow")
+    max = A[0]
+    A[0] = A[n]
+    A.pop(n)
+    _max_heapify(A, 0)
+    return max
+
     
 
 def build_max_heap(A):
@@ -98,16 +103,19 @@ def heapsort(A):
     and then extracting each element from biggest to smallest.
     Note that this is done in place.
     """
-    s = math.floor(len(A))
+    build_max_heap(A)
+    n = len(A) - 1
+    for i in range(n, 0, -1):
+        A[0], A[i] = A[i], A[0]
+        _max_heapify(A[:i], 0)
 
-    for i in range(s, -1, 2):
-        A[1], A[i] = A[i], A[1]
-        _max_heapify(A, 1)
+
     
 
 
 a = [5,2,35,15,2]
 build_max_heap(a)
+
 print(a)
     
 
