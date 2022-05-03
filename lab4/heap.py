@@ -72,7 +72,11 @@ def heap_extract_max(A):
     Removes the maximum value from the heap and returns it.
     The list size should be reduced by 1.
     """
-    pass
+    largest = A[1]
+    A[1] = A[len(A) - 1]
+    _max_heapify(A, 1)
+    return largest
+    
 
 def build_max_heap(A):
     """
